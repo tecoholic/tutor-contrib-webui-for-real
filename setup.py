@@ -42,17 +42,13 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     python_requires=">=3.9",
-    install_requires=["tutor>=18.0.0,<19.0.0"],
+    install_requires=["tutor>=18.0.0,<19.0.0", "click-web>=0.8.6"],
     extras_require={
         "dev": [
             "tutor[dev]>=18.0.0,<19.0.0",
         ]
     },
-    entry_points={
-        "tutor.plugin.v1": [
-            "webui-for-real = tutor_webui_for_real.plugin"
-        ]
-    },
+    entry_points={"tutor.plugin.v1": ["webui-for-real = tutor_webui_for_real.plugin"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

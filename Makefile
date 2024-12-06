@@ -3,6 +3,13 @@
 SRC_DIRS = ./tutor_webui_for_real
 BLACK_OPTS = --exclude templates ${SRC_DIRS}
 
+ensure-piptools:
+	python -m pip install pip-tools
+
+dev: ensure-piptools
+	pip-compile
+	pip-sync
+
 # Warning: These checks are not necessarily run on every PR.
 test: test-lint test-types test-format  # Run some static checks.
 
