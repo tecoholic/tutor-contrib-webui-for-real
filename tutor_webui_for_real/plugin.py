@@ -4,8 +4,11 @@ from glob import glob
 import click
 import importlib_resources
 from tutor import hooks
+from click_web import create_click_web_app
+from tutor.commands import cli
 
 from .__about__ import __version__
+from telnetlib import EC
 
 ########################################
 # CONFIGURATION
@@ -155,7 +158,9 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 
 # For each file in tutor_webui_for_real/patches,
 # apply a patch based on the file's name and contents.
-for path in glob(str(importlib_resources.files("tutor_webui_for_real") / "patches" / "*")):
+for path in glob(
+    str(importlib_resources.files("tutor_webui_for_real") / "patches" / "*")
+):
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
@@ -204,12 +209,27 @@ for path in glob(str(importlib_resources.files("tutor_webui_for_real") / "patche
 # group and then add it to CLI_COMMANDS:
 
 
-### @click.group()
-### def webui-for-real() -> None:
-###     pass
+@click.group(short_help="WebUI for reals this time.")
+def webui_for_real() -> None:
+    pass
 
 
-### hooks.Filters.CLI_COMMANDS.add_item(webui-for-real)
+@click.command(help="Start the web UI")
+@click.pass_context
+def start(context: click.Context) -> None:
+    # TODO
+    # we need to pass the context here for the webserver to correctly load the
+    # tutor environment and configuration.
+    #
+    # This (see link) should be modified upstream to accept a context value.
+    # https://github.com/fredrik-corneliusson/click-web/blob/master/click_web/resources/index.py#L10
+    app = create_click_web_app(cli, cli.cli)
+    app.run(debug=True)
+
+
+webui_for_real.add_command(start)
+
+hooks.Filters.CLI_COMMANDS.add_item(webui_for_real)
 
 
 # Then, you would add subcommands directly to the Click group, for example:
