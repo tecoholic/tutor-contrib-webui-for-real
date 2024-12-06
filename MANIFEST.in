@@ -1,0 +1,2 @@
+recursive-include tutor_webui_for_real/patches *
+recursive-include tutor_webui_for_real/templates *
