@@ -2,17 +2,13 @@
 
 An actual web UI for Tutor.
 
-> [!WARNING]
-> This is a Proof Of Concept project at this stage. The upstream click-web library constructs it's own context for the Tutor CLI with the default `TUTOR_ROOT`.
-> So, if you have your tutor directory set to some other directory, the UI won't be usable to accomplish anything meaningful. You can still browse the commands.
-
 ![Screenshot of the Web UI](screenshot.png)
 
 
 ## Installation
 
 ```sh
-pip install git+https://github.com/tecoholic/tutor-contrib-webui-for-real
+pip install git+https://github.com/tecoholic/tutor-contrib-webui-for-real.git
 ```
 
 ## Usage
@@ -22,7 +18,11 @@ tutor plugins enable webui-for-real
 tutor webui-for-real start
 ```
 
-The real webui should be accessible from http://localhost:5000.
+The webui should be accessible from http://localhost:5000.
+
+> [!WARNING]
+> This uses the [click-web](https://github.com/fredrik-corneliusson/click-web) under the hood and is useful for quickly running non-interactive Tutor commands.
+> *DO NOT* use this to run interactive commands like launching a shell.
 
 ## License
 
