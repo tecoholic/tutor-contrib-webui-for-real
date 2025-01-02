@@ -21,7 +21,7 @@ click==8.1.7
     #   click-web
     #   flask
     #   tutor
-click-web==0.8.6
+click-web @ git+https://github.com/tecoholic/click-web.git@handle-evvars
     # via tutor-contrib-webui-for-real (setup.py)
 durationpy==0.9
     # via kubernetes
@@ -88,7 +88,7 @@ six==1.17.0
     # via
     #   kubernetes
     #   python-dateutil
-tutor==18.2.0
+tutor==19.0.0
     # via tutor-contrib-webui-for-real (setup.py)
 typing-extensions==4.12.2
     # via

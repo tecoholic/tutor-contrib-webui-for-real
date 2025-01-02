@@ -43,7 +43,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.9",
     install_requires=[
-        "tutor>=18.0.0,<19.0.0",
+        "tutor>=19.0.0,<20.0.0",
         "click-web @ git+https://github.com/tecoholic/click-web.git@handle-evvars",
     ],
     extras_require={
