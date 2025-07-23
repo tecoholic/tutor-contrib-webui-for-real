@@ -1,5 +1,8 @@
 # webui-for-real plugin for [Tutor](https://docs.tutor.edly.io)
 
+> [!IMPORTANT]
+> [Tutor Deck](https://github.com/overhangio/tutor-deck) is a much better alternative to this.
+
 An actual web UI for Tutor.
 
 ![Screenshot of the Web UI](screenshot.png)
